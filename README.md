@@ -18,6 +18,6 @@ Tic tac toe is a simple app to practice and learn how a React app is compose. In
 
 ## Setup
 - Download the repository
-- cd tic-tac-toe 
+- cd react-tic-tac-toe 
 - run `npm install`
 - run `npm run dev`
