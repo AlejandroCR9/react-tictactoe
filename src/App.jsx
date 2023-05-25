@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import confetti from 'canvas-confetti'
+
 import { Square } from './components/Square.jsx'
+import { Board } from './components/Board.jsx'
+import { WinnerModal } from './components/WinnerModal.jsx'
+
 import { TURNS } from './constants.js'
 import { checkWinnerFrom, checkEndGame } from './logic/board.js'
 
 import './App.css'
-import { WinnerModal } from './components/WinnerModal.jsx'
-
-
-
-
-
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null))
@@ -18,7 +16,9 @@ function App() {
   const [winner, setWinner] = useState(null)
 
   const updateBoard = (index) => {
+
     if(board[index] || winner) return
+    
     const newBoard = [... board]
     newBoard[index] = turn
     setBoard(newBoard)
@@ -44,20 +44,8 @@ function App() {
       
       <h1>Tic tac toe</h1>
       <button onClick={resetGame}>Empezar de nuevo</button>
-      <section className='game'>
-        {
-          board.map((_, index) =>{
-            return (
-              <Square
-              index={index}
-              key={index}
-              updateBoard={updateBoard}>
-                {board[index]}
-              </Square>
-            )
-          })
-        }
-      </section>
+      <Board board={board} updateBoard={updateBoard}/>
+
       <section className='turn'>
         <Square isSelected={turn === TURNS.X}>
           {TURNS.X}
